@@ -4,146 +4,206 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="apple-mobile-web-app-title" content="EV充電ナビ">
-<meta name="theme-color" content="#0a1628">
+<meta name="theme-color" content="#443B60">
 <title>EV充電ナビ</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0a1628;
-    --card: #111e35;
-    --card2: #162340;
-    --accent1: #00e5ff;
-    --accent2: #69ff47;
-    --accent3: #ff6b6b;
-    --accent4: #ffd93d;
-    --text: #f0f4ff;
-    --muted: #7a8fbb;
-    --radius: 20px;
+    --midnight:      #443B60;
+    --midnight-mid:  #6B5F8A;
+    --midnight-soft: #EAE7F2;
+    --midnight-pale: #F5F3F9;
+    --lemon:         #E3E748;
+    --lemon-soft:    #F7F8B4;
+    --dusty:         #DFD1D5;
+    --dusty-dark:    #B8A5AB;
+    --grey:          #A2A2A2;
+    --grey-light:    #E8E8E8;
+    --white:         #FFFFFF;
+    --text:          #2A2338;
+    --radius-sm:     8px;
+    --radius-md:     12px;
+    --radius-lg:     18px;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: 'Nunito', sans-serif;
-    background: var(--bg);
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--midnight-pale);
     color: var(--text);
     min-height: 100vh;
-    padding-bottom: 40px;
-    background-image:
-      radial-gradient(ellipse at 20% 10%, rgba(0,229,255,0.08) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 80%, rgba(105,255,71,0.06) 0%, transparent 50%);
+    padding-bottom: 60px;
+    -webkit-font-smoothing: antialiased;
   }
 
   /* HEADER */
   header {
-    padding: 52px 24px 24px;
-    text-align: center;
+    background: var(--white);
+    padding: 52px 24px 20px;
+    border-bottom: 1px solid var(--dusty);
   }
   .logo {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 42px;
-    letter-spacing: 4px;
-    background: linear-gradient(90deg, var(--accent1), var(--accent2));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--grey);
+    margin-bottom: 8px;
+  }
+  .app-title {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--midnight);
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .app-title .highlight {
+    display: inline-block;
+    background: var(--midnight);
+    color: var(--lemon);
+    padding: 2px 10px 3px;
+    border-radius: 6px;
+    font-size: 24px;
+    margin-left: 3px;
+    vertical-align: 2px;
   }
   .tagline {
-    font-size: 13px;
-    color: var(--muted);
+    font-size: 12px;
+    color: var(--grey);
     margin-top: 6px;
-    letter-spacing: 1px;
-    font-weight: 600;
+    font-weight: 400;
+    letter-spacing: 0.01em;
   }
 
   /* MAIN */
-  main { padding: 0 16px; max-width: 480px; margin: 0 auto; }
+  main {
+    padding: 20px 16px 0;
+    max-width: 480px;
+    margin: 0 auto;
+  }
 
   /* STEP CARD */
   .step-card {
-    background: var(--card);
-    border-radius: var(--radius);
+    background: var(--white);
+    border-radius: var(--radius-lg);
     padding: 20px;
-    margin-bottom: 14px;
-    border: 1px solid rgba(255,255,255,0.06);
-    position: relative;
-    overflow: hidden;
+    margin-bottom: 12px;
+    border: 1px solid var(--dusty);
   }
-  .step-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-  }
-  .step-card.step1::before { background: linear-gradient(90deg, var(--accent1), #0097a7); }
-  .step-card.step2::before { background: linear-gradient(90deg, var(--accent4), #ff9f1c); }
-  .step-card.step3::before { background: linear-gradient(90deg, var(--accent2), #00b300); }
-
   .step-header {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     margin-bottom: 16px;
   }
   .step-num {
-    width: 32px; height: 32px;
+    width: 26px; height: 26px;
     border-radius: 50%;
+    background: var(--midnight-soft);
+    color: var(--midnight);
     display: flex; align-items: center; justify-content: center;
-    font-weight: 900; font-size: 14px;
+    font-size: 12px;
+    font-weight: 600;
     flex-shrink: 0;
   }
-  .step1 .step-num { background: rgba(0,229,255,0.2); color: var(--accent1); }
-  .step2 .step-num { background: rgba(255,217,61,0.2); color: var(--accent4); }
-  .step3 .step-num { background: rgba(105,255,71,0.2); color: var(--accent2); }
-
-  .step-title { font-size: 15px; font-weight: 800; }
+  .step-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--midnight);
+    letter-spacing: 0.01em;
+  }
 
   /* MAKER TABS */
   .maker-tabs {
     display: flex;
-    gap: 8px;
+    gap: 6px;
     flex-wrap: wrap;
     margin-bottom: 12px;
   }
   .maker-tab {
-    padding: 6px 14px;
+    padding: 5px 14px;
     border-radius: 20px;
-    border: 1.5px solid rgba(255,255,255,0.12);
+    border: 1px solid var(--dusty);
     background: transparent;
-    color: var(--muted);
-    font-family: 'Nunito', sans-serif;
+    color: var(--grey);
+    font-family: 'DM Sans', sans-serif;
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.15s;
   }
+  .maker-tab:hover { border-color: var(--midnight-mid); color: var(--midnight); }
   .maker-tab.active {
-    border-color: var(--accent1);
-    color: var(--accent1);
-    background: rgba(0,229,255,0.1);
+    background: var(--midnight);
+    border-color: var(--midnight);
+    color: var(--white);
   }
 
   /* SELECT */
   select {
     width: 100%;
-    padding: 14px 16px;
-    border-radius: 14px;
-    border: 1.5px solid rgba(255,255,255,0.1);
-    background: var(--card2);
+    padding: 12px 40px 12px 14px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--dusty);
+    background: var(--midnight-pale);
     color: var(--text);
-    font-family: 'Nunito', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
     appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%237a8fbb' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23A2A2A2' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 14px center;
     cursor: pointer;
+    transition: border-color 0.15s;
   }
-  select:focus { outline: none; border-color: var(--accent1); }
+  select:focus { outline: none; border-color: var(--midnight); }
+
+  /* CAR INFO */
+  .car-info-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .info-item {
+    background: var(--midnight-pale);
+    border-radius: var(--radius-sm);
+    padding: 10px 8px;
+    text-align: center;
+    border: 1px solid var(--midnight-soft);
+  }
+  .info-item .val {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--midnight);
+    font-family: 'DM Mono', monospace;
+    line-height: 1.2;
+  }
+  .info-item .lbl {
+    font-size: 10px;
+    color: var(--grey);
+    margin-top: 3px;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+  .battery-bar {
+    background: var(--dusty);
+    border-radius: 4px;
+    height: 4px;
+    margin-top: 12px;
+    overflow: hidden;
+  }
+  .battery-fill {
+    height: 100%;
+    border-radius: 4px;
+    background: var(--midnight);
+    transition: width 0.6s ease;
+    width: 0%;
+  }
 
   /* CHARGER BUTTONS */
   .charger-grid {
@@ -152,276 +212,303 @@
     gap: 8px;
   }
   .charger-btn {
-    padding: 12px 8px;
-    border-radius: 14px;
-    border: 1.5px solid rgba(255,255,255,0.1);
-    background: var(--card2);
-    color: var(--muted);
-    font-family: 'Nunito', sans-serif;
-    font-weight: 800;
+    padding: 14px 8px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--dusty);
+    background: var(--midnight-pale);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.15s;
     text-align: center;
   }
-  .charger-btn .kw { font-size: 20px; color: var(--text); display: block; }
-  .charger-btn .label { font-size: 11px; margin-top: 2px; display: block; }
-  .charger-btn.active {
-    border-color: var(--accent4);
-    background: rgba(255,217,61,0.1);
-    color: var(--accent4);
+  .charger-btn:hover { border-color: var(--midnight-mid); background: var(--midnight-soft); }
+  .charger-btn .kw {
+    font-size: 18px;
+    font-weight: 600;
+    display: block;
+    color: var(--midnight);
+    font-family: 'DM Mono', monospace;
+    line-height: 1.2;
   }
-  .charger-btn.active .kw { color: var(--accent4); }
+  .charger-btn .label {
+    font-size: 11px;
+    margin-top: 3px;
+    display: block;
+    color: var(--grey);
+  }
+  .charger-btn.active {
+    border-color: var(--midnight);
+    background: var(--midnight);
+    color: var(--white);
+  }
+  .charger-btn.active .kw { color: var(--lemon); }
+  .charger-btn.active .label { color: var(--dusty); }
 
   /* CUSTOM CHARGER */
   .custom-charger {
-    margin-top: 10px;
+    margin-top: 8px;
     display: flex;
     align-items: center;
     gap: 10px;
-    background: var(--card2);
-    border-radius: 14px;
-    border: 1.5px solid rgba(255,255,255,0.1);
-    padding: 12px 16px;
+    background: var(--midnight-pale);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--dusty);
+    padding: 12px 14px;
+    transition: border-color 0.15s;
   }
+  .custom-charger:focus-within { border-color: var(--midnight); }
   .custom-charger input {
     flex: 1;
     background: transparent;
     border: none;
     color: var(--text);
-    font-family: 'Nunito', sans-serif;
-    font-size: 20px;
-    font-weight: 800;
+    font-family: 'DM Mono', monospace;
+    font-size: 18px;
+    font-weight: 500;
     width: 80px;
     outline: none;
   }
-  .custom-charger span { color: var(--muted); font-size: 14px; font-weight: 700; }
+  .custom-charger input::placeholder { color: var(--grey-light); }
+  .custom-charger span { color: var(--grey); font-size: 13px; font-weight: 500; }
 
   /* DISTANCE SLIDER */
   .distance-display {
     text-align: center;
     margin-bottom: 16px;
+    padding: 8px 0 0;
   }
   .distance-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 72px;
+    font-family: 'DM Mono', monospace;
+    font-size: 64px;
+    font-weight: 500;
+    color: var(--midnight);
     line-height: 1;
-    background: linear-gradient(90deg, var(--accent2), var(--accent1));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    letter-spacing: -0.02em;
   }
-  .distance-unit { font-size: 18px; color: var(--muted); font-weight: 700; margin-top: -8px; }
+  .distance-unit {
+    font-size: 16px;
+    color: var(--grey);
+    font-weight: 500;
+    margin-top: 2px;
+  }
 
   input[type="range"] {
     width: 100%;
-    height: 6px;
-    border-radius: 3px;
-    background: var(--card2);
+    height: 4px;
+    border-radius: 2px;
+    background: var(--dusty);
     outline: none;
     -webkit-appearance: none;
     cursor: pointer;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
+    border: none;
   }
   input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 28px; height: 28px;
+    width: 22px; height: 22px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent2), var(--accent1));
+    background: var(--midnight);
     cursor: pointer;
-    box-shadow: 0 0 12px rgba(105,255,71,0.5);
+    box-shadow: 0 0 0 4px var(--midnight-soft);
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: var(--midnight);
+    border: none;
+    cursor: pointer;
   }
   .range-labels {
     display: flex;
     justify-content: space-between;
-    font-size: 12px;
-    color: var(--muted);
-    font-weight: 700;
+    font-size: 11px;
+    color: var(--grey);
+    font-weight: 500;
   }
 
   /* QUICK DISTANCES */
   .quick-dist {
     display: flex;
-    gap: 8px;
+    gap: 6px;
     flex-wrap: wrap;
     margin-top: 12px;
   }
   .quick-btn {
-    padding: 6px 14px;
+    padding: 5px 13px;
     border-radius: 20px;
-    border: 1.5px solid rgba(255,255,255,0.1);
+    border: 1px solid var(--dusty);
     background: transparent;
-    color: var(--muted);
-    font-family: 'Nunito', sans-serif;
+    color: var(--grey);
+    font-family: 'DM Sans', sans-serif;
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 500;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.15s;
   }
-  .quick-btn:active { transform: scale(0.95); }
+  .quick-btn:hover { border-color: var(--midnight-mid); color: var(--midnight); }
   .quick-btn.active {
-    border-color: var(--accent2);
-    color: var(--accent2);
-    background: rgba(105,255,71,0.1);
+    border-color: var(--midnight);
+    background: var(--midnight-soft);
+    color: var(--midnight);
+    font-weight: 600;
   }
-
-  /* RESULT */
-  .result-card {
-    background: linear-gradient(135deg, #0d2137, #0a2820);
-    border-radius: var(--radius);
-    padding: 28px 24px;
-    margin-bottom: 14px;
-    border: 1px solid rgba(105,255,71,0.2);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-    display: none;
-  }
-  .result-card.visible { display: block; animation: slideUp 0.4s ease; }
-  @keyframes slideUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .result-card::before {
-    content: '⚡';
-    position: absolute;
-    font-size: 120px;
-    opacity: 0.04;
-    right: -10px; top: -20px;
-  }
-  .result-label { font-size: 13px; color: var(--muted); font-weight: 700; letter-spacing: 1px; margin-bottom: 8px; }
-  .result-time {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 80px;
-    line-height: 1;
-    background: linear-gradient(90deg, var(--accent2), var(--accent1));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .result-unit { font-size: 16px; color: var(--muted); font-weight: 700; }
-  .result-detail {
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-  }
-  .result-item {
-    background: rgba(255,255,255,0.04);
-    border-radius: 12px;
-    padding: 10px 6px;
-  }
-  .result-item .val { font-size: 18px; font-weight: 900; color: var(--text); }
-  .result-item .lbl { font-size: 11px; color: var(--muted); margin-top: 2px; font-weight: 600; }
-
-  /* TIPS */
-  .tip-card {
-    background: rgba(255,217,61,0.07);
-    border-radius: 14px;
-    padding: 14px 16px;
-    border: 1px solid rgba(255,217,61,0.2);
-    margin-bottom: 14px;
-    font-size: 13px;
-    color: #f0e68c;
-    line-height: 1.6;
-    display: none;
-  }
-  .tip-card.visible { display: block; }
-  .tip-card strong { color: var(--accent4); }
 
   /* CALC BUTTON */
   .calc-btn {
     width: 100%;
-    padding: 18px;
-    border-radius: var(--radius);
+    padding: 16px;
+    border-radius: var(--radius-lg);
     border: none;
-    background: linear-gradient(135deg, var(--accent2), var(--accent1));
-    color: #0a1628;
-    font-family: 'Nunito', sans-serif;
-    font-size: 18px;
-    font-weight: 900;
+    background: var(--midnight);
+    color: var(--lemon);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
     cursor: pointer;
-    letter-spacing: 1px;
-    transition: all 0.2s;
-    margin-bottom: 14px;
-    box-shadow: 0 8px 24px rgba(105,255,71,0.25);
+    letter-spacing: 0.04em;
+    transition: all 0.15s;
+    margin-bottom: 12px;
   }
-  .calc-btn:active { transform: scale(0.97); }
+  .calc-btn:hover { opacity: 0.9; }
+  .calc-btn:active { transform: scale(0.99); }
 
-  /* BATTERY VISUAL */
-  .battery-bar {
-    background: var(--card2);
-    border-radius: 8px;
-    height: 10px;
-    margin-top: 14px;
-    overflow: hidden;
+  /* RESULT CARD */
+  .result-card {
+    background: var(--midnight);
+    border-radius: var(--radius-lg);
+    padding: 28px 24px;
+    margin-bottom: 12px;
+    text-align: center;
+    display: none;
+    border: 1px solid transparent;
   }
-  .battery-fill {
-    height: 100%;
-    border-radius: 8px;
-    background: linear-gradient(90deg, var(--accent2), var(--accent1));
-    transition: width 0.8s ease;
-    width: 0%;
+  .result-card.visible {
+    display: block;
+    animation: slideUp 0.35s ease;
   }
-
-  .badge {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 20px;
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .result-label {
     font-size: 11px;
-    font-weight: 800;
-    margin-left: 8px;
-    vertical-align: middle;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(223,209,213,0.6);
+    margin-bottom: 10px;
   }
-  .badge-japan { background: rgba(255,107,107,0.2); color: #ff6b6b; }
-  .badge-import { background: rgba(0,229,255,0.15); color: var(--accent1); }
+  .result-time {
+    font-family: 'DM Mono', monospace;
+    font-size: 72px;
+    font-weight: 500;
+    color: var(--lemon);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .result-unit {
+    font-size: 16px;
+    color: rgba(223,209,213,0.7);
+    font-weight: 500;
+    margin-top: 4px;
+  }
+  .result-detail {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .result-item {
+    background: rgba(255,255,255,0.06);
+    border-radius: var(--radius-sm);
+    padding: 10px 6px;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .result-item .val {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--white);
+    font-family: 'DM Mono', monospace;
+  }
+  .result-item .lbl {
+    font-size: 10px;
+    color: rgba(223,209,213,0.6);
+    margin-top: 3px;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  /* TIP CARD */
+  .tip-card {
+    background: var(--lemon-soft);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    border: 1px solid rgba(227,231,72,0.5);
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.6;
+    display: none;
+  }
+  .tip-card.visible { display: block; }
+  .tip-card strong { color: var(--midnight); font-weight: 600; }
 
   /* RESTORED BANNER */
   .restored-banner {
     position: fixed;
     top: 16px; left: 50%;
     transform: translateX(-50%);
-    background: rgba(105,255,71,0.15);
-    border: 1.5px solid var(--accent2);
-    color: var(--accent2);
+    background: var(--midnight);
+    border: 1px solid var(--dusty);
+    color: var(--white);
     padding: 10px 20px;
     border-radius: 30px;
     font-size: 13px;
-    font-weight: 800;
+    font-weight: 500;
     display: none;
     align-items: center;
     gap: 8px;
     z-index: 999;
     white-space: nowrap;
     transition: opacity 0.4s;
-    backdrop-filter: blur(10px);
+    letter-spacing: 0.01em;
   }
 
   .footer {
     text-align: center;
-    padding: 20px;
+    padding: 24px 20px;
     font-size: 11px;
-    color: var(--muted);
-    line-height: 1.8;
+    color: var(--grey);
+    line-height: 1.9;
+    max-width: 480px;
+    margin: 0 auto;
   }
 
-  optgroup { font-weight: 800; }
+  optgroup { font-weight: 600; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .result-card.visible { animation: none; }
+  }
 </style>
 </head>
 <body>
 
 <div class="restored-banner" id="restoredBanner">
-  ✅ 前回の設定を復元しました
+  ✓ 前回の設定を復元しました
 </div>
 
 <header>
-  <div class="logo">⚡ EV充電ナビ</div>
-  <div class="tagline">走りたい距離から充電時間を逆算</div>
+  <div class="logo">EV Charging Navigator</div>
+  <div class="app-title">何km走る？<span class="highlight">→ 何分？</span></div>
+  <div class="tagline">走りたい距離を入力 — 充電時間を計算</div>
 </header>
 
 <main>
 
-  <!-- STEP 1: 車種 -->
-  <div class="step-card step1">
+  <!-- STEP 1 -->
+  <div class="step-card">
     <div class="step-header">
       <div class="step-num">1</div>
       <div class="step-title">車種を選んでください</div>
@@ -434,30 +521,30 @@
     </div>
 
     <select id="carSelect" onchange="updateCarInfo()">
-      <option value="">-- 車種を選択 --</option>
+      <option value="">— 車種を選択 —</option>
     </select>
 
-    <div id="carInfo" style="margin-top:12px; display:none;">
-      <div class="result-detail">
-        <div class="result-item">
-          <div class="val" id="infoCapacity">-</div>
-          <div class="lbl">バッテリー(kWh)</div>
+    <div id="carInfo" style="display:none;">
+      <div class="car-info-grid">
+        <div class="info-item">
+          <div class="val" id="infoCapacity">—</div>
+          <div class="lbl">バッテリー<br>(kWh)</div>
         </div>
-        <div class="result-item">
-          <div class="val" id="infoRange">-</div>
-          <div class="lbl">カタログ航続距離(km)</div>
+        <div class="info-item">
+          <div class="val" id="infoRange">—</div>
+          <div class="lbl">航続距離<br>(km)</div>
         </div>
-        <div class="result-item">
-          <div class="val" id="infoEfficiency">-</div>
-          <div class="lbl">電費(km/kWh)</div>
+        <div class="info-item">
+          <div class="val" id="infoEfficiency">—</div>
+          <div class="lbl">電費<br>(km/kWh)</div>
         </div>
       </div>
       <div class="battery-bar"><div class="battery-fill" id="batteryFill"></div></div>
     </div>
   </div>
 
-  <!-- STEP 2: 充電器 -->
-  <div class="step-card step2">
+  <!-- STEP 2 -->
+  <div class="step-card">
     <div class="step-header">
       <div class="step-num">2</div>
       <div class="step-title">充電器の出力を選んでください</div>
@@ -474,22 +561,22 @@
       </button>
       <button class="charger-btn" onclick="selectCharger(50, this)">
         <span class="kw">50 kW</span>
-        <span class="label">急速充電(標準)</span>
+        <span class="label">急速充電（標準）</span>
       </button>
       <button class="charger-btn" onclick="selectCharger(90, this)">
         <span class="kw">90 kW</span>
-        <span class="label">急速充電(高出力)</span>
+        <span class="label">急速充電（高出力）</span>
       </button>
     </div>
 
     <div class="custom-charger">
-      <input type="number" id="customKw" placeholder="その他" min="1" max="350" oninput="selectCustomCharger()">
-      <span>kW（手入力）</span>
+      <input type="number" id="customKw" placeholder="その他の出力" min="1" max="350" oninput="selectCustomCharger()">
+      <span>kW</span>
     </div>
   </div>
 
-  <!-- STEP 3: 距離 -->
-  <div class="step-card step3">
+  <!-- STEP 3 -->
+  <div class="step-card">
     <div class="step-header">
       <div class="step-num">3</div>
       <div class="step-title">走りたい距離を設定してください</div>
@@ -501,37 +588,37 @@
     </div>
 
     <input type="range" id="distSlider" min="10" max="800" value="100" step="10" oninput="updateDistance(this.value)">
-    <div class="range-labels"><span>10km</span><span>400km</span><span>800km</span></div>
+    <div class="range-labels"><span>10 km</span><span>400 km</span><span>800 km</span></div>
 
     <div class="quick-dist">
-      <button class="quick-btn" onclick="setDist(50)">50km</button>
-      <button class="quick-btn" onclick="setDist(100)">100km</button>
-      <button class="quick-btn active" onclick="setDist(200)">200km</button>
-      <button class="quick-btn" onclick="setDist(300)">300km</button>
-      <button class="quick-btn" onclick="setDist(500)">500km</button>
+      <button class="quick-btn" onclick="setDist(50)">50 km</button>
+      <button class="quick-btn active" onclick="setDist(100)">100 km</button>
+      <button class="quick-btn" onclick="setDist(200)">200 km</button>
+      <button class="quick-btn" onclick="setDist(300)">300 km</button>
+      <button class="quick-btn" onclick="setDist(500)">500 km</button>
     </div>
   </div>
 
   <!-- CALC BUTTON -->
-  <button class="calc-btn" onclick="calculate()">⚡ 充電時間を計算する</button>
+  <button class="calc-btn" onclick="calculate()">充電時間を計算する →</button>
 
   <!-- RESULT -->
   <div class="result-card" id="resultCard">
     <div class="result-label">必要な充電時間</div>
-    <div class="result-time" id="resultTime">--</div>
+    <div class="result-time" id="resultTime">—</div>
     <div class="result-unit" id="resultUnit"></div>
-    <div class="result-detail" style="margin-top:20px;">
+    <div class="result-detail">
       <div class="result-item">
-        <div class="val" id="resKwh">-</div>
-        <div class="lbl">必要電力(kWh)</div>
+        <div class="val" id="resKwh">—</div>
+        <div class="lbl">必要電力<br>(kWh)</div>
       </div>
       <div class="result-item">
-        <div class="val" id="resCharger">-</div>
-        <div class="lbl">充電出力(kW)</div>
+        <div class="val" id="resCharger">—</div>
+        <div class="lbl">充電出力<br>(kW)</div>
       </div>
       <div class="result-item">
-        <div class="val" id="resEfficiency">-</div>
-        <div class="lbl">電費(km/kWh)</div>
+        <div class="val" id="resEfficiency">—</div>
+        <div class="lbl">電費<br>(km/kWh)</div>
       </div>
     </div>
   </div>
@@ -542,63 +629,84 @@
 </main>
 
 <div class="footer">
-  ※ 計算結果は目安です。気温・走行条件・充電器の実出力により変動します。<br>
-  ※ 航続距離はWLTCモード値を参考にしています。<br><br>
+  計算結果は目安です。気温・走行条件・充電器の実出力により変動します。<br>
+  航続距離はWLTCモード値を参考にしています。★マークは2024〜2026年の新型・改良モデル。<br><br>
   EV充電ナビ — EVライフをもっと身近に
 </div>
 
 <script>
-// ===== 車両データベース =====
 const cars = [
-  // 国産
-  { name: "日産 リーフ (40kWh)", maker: "japan", capacity: 40, range: 322, maxCharge: 50 },
-  { name: "日産 リーフe+ (62kWh)", maker: "japan", capacity: 62, range: 458, maxCharge: 100 },
+  // 国産 ————————————————————
+  // 日産
+  { name: "日産 リーフ B5 (55kWh) ★新型", maker: "japan", capacity: 55, range: 521, maxCharge: 105 },
+  { name: "日産 リーフ B7 (78kWh) ★新型", maker: "japan", capacity: 78, range: 702, maxCharge: 150 },
   { name: "日産 アリア (66kWh)", maker: "japan", capacity: 66, range: 450, maxCharge: 130 },
   { name: "日産 アリア (91kWh)", maker: "japan", capacity: 91, range: 610, maxCharge: 130 },
   { name: "日産 サクラ", maker: "japan", capacity: 20, range: 180, maxCharge: 50 },
+  { name: "日産 クリッパー EV", maker: "japan", capacity: 20, range: 180, maxCharge: 50 },
+  // 三菱
   { name: "三菱 eKクロスEV", maker: "japan", capacity: 20, range: 180, maxCharge: 50 },
-  { name: "三菱 アウトランダーPHEV", maker: "japan", capacity: 20, range: 87, maxCharge: 50 },
+  { name: "三菱 アウトランダーPHEV (改良) ★", maker: "japan", capacity: 22.7, range: 106, maxCharge: 50 },
+  // トヨタ
   { name: "トヨタ bZ4X (FWD)", maker: "japan", capacity: 71.4, range: 559, maxCharge: 150 },
   { name: "トヨタ bZ4X (AWD)", maker: "japan", capacity: 72.8, range: 500, maxCharge: 150 },
   { name: "トヨタ C-HR PHEV", maker: "japan", capacity: 13.6, range: 80, maxCharge: 7.4 },
+  // レクサス
   { name: "レクサス RZ450e", maker: "japan", capacity: 71.4, range: 494, maxCharge: 150 },
   { name: "レクサス UX300e", maker: "japan", capacity: 72.8, range: 560, maxCharge: 50 },
+  // スバル
   { name: "スバル ソルテラ", maker: "japan", capacity: 71.4, range: 487, maxCharge: 150 },
+  // ホンダ
   { name: "ホンダ e:Ny1", maker: "japan", capacity: 68.8, range: 412, maxCharge: 78 },
-  { name: "ホンダ ヴェゼルe:HEV", maker: "japan", capacity: 1.8, range: 26, maxCharge: 7.4 },
+  { name: "ホンダ N-VAN e: ★新型", maker: "japan", capacity: 29.6, range: 245, maxCharge: 50 },
+  // マツダ
   { name: "マツダ MX-30 EV", maker: "japan", capacity: 35.5, range: 256, maxCharge: 50 },
 
-  // 輸入
+  // 輸入 ————————————————————
+  // テスラ
   { name: "テスラ モデル3 RWD", maker: "import", capacity: 60, range: 602, maxCharge: 170 },
   { name: "テスラ モデル3 ロングレンジ", maker: "import", capacity: 78.1, range: 713, maxCharge: 250 },
   { name: "テスラ モデルY RWD", maker: "import", capacity: 60, range: 530, maxCharge: 170 },
   { name: "テスラ モデルY ロングレンジ", maker: "import", capacity: 78.1, range: 600, maxCharge: 250 },
   { name: "テスラ モデルS ロングレンジ", maker: "import", capacity: 100, range: 652, maxCharge: 250 },
   { name: "テスラ モデルX ロングレンジ", maker: "import", capacity: 100, range: 547, maxCharge: 250 },
+  // ボルボ
   { name: "ボルボ EX30", maker: "import", capacity: 51, range: 344, maxCharge: 153 },
   { name: "ボルボ EX40 シングル", maker: "import", capacity: 69, range: 484, maxCharge: 150 },
   { name: "ボルボ EX40 ツイン", maker: "import", capacity: 78, range: 446, maxCharge: 150 },
-  { name: "ボルボ EX60", maker: "import", capacity: 100, range: 560, maxCharge: 200 },
+  { name: "ボルボ EX60 ★新型", maker: "import", capacity: 100, range: 560, maxCharge: 200 },
   { name: "ボルボ EC40", maker: "import", capacity: 69, range: 480, maxCharge: 150 },
+  // BMW
   { name: "BMW iX1 xDrive30", maker: "import", capacity: 64.7, range: 440, maxCharge: 130 },
   { name: "BMW iX3", maker: "import", capacity: 80, range: 514, maxCharge: 150 },
   { name: "BMW i4 eDrive40", maker: "import", capacity: 83.9, range: 590, maxCharge: 205 },
   { name: "BMW iX xDrive50", maker: "import", capacity: 111.5, range: 630, maxCharge: 200 },
+  // メルセデス
   { name: "メルセデス EQA 250", maker: "import", capacity: 66.5, range: 422, maxCharge: 100 },
   { name: "メルセデス EQB 300 4MATIC", maker: "import", capacity: 66.5, range: 416, maxCharge: 100 },
   { name: "メルセデス EQC 400 4MATIC", maker: "import", capacity: 80, range: 400, maxCharge: 110 },
   { name: "メルセデス EQS 450+", maker: "import", capacity: 107.8, range: 700, maxCharge: 200 },
+  // VW
   { name: "フォルクスワーゲン ID.4 Pro", maker: "import", capacity: 77, range: 561, maxCharge: 135 },
   { name: "フォルクスワーゲン ID.3 Pro", maker: "import", capacity: 58, range: 426, maxCharge: 100 },
+  // アウディ
   { name: "アウディ Q4 e-tron", maker: "import", capacity: 76.6, range: 537, maxCharge: 135 },
   { name: "アウディ e-tron GT", maker: "import", capacity: 93.4, range: 488, maxCharge: 270 },
+  // ポルシェ
   { name: "ポルシェ タイカン", maker: "import", capacity: 93.4, range: 484, maxCharge: 270 },
-  { name: "ヒョンデ IONIQ5 Standard", maker: "import", capacity: 58, range: 360, maxCharge: 100 },
-  { name: "ヒョンデ IONIQ5 Long Range", maker: "import", capacity: 72.6, range: 498, maxCharge: 220 },
+  // ヒョンデ
+  { name: "ヒョンデ IONIQ5 (84kWh) ★改良新型", maker: "import", capacity: 84, range: 703, maxCharge: 220 },
+  { name: "ヒョンデ IONIQ5 AWD (84kWh) ★改良新型", maker: "import", capacity: 84, range: 648, maxCharge: 220 },
+  { name: "ヒョンデ IONIQ5 N (84kWh) ★", maker: "import", capacity: 84, range: 448, maxCharge: 220 },
   { name: "ヒョンデ IONIQ6 RWD", maker: "import", capacity: 77.4, range: 614, maxCharge: 220 },
+  // BYD
   { name: "BYD ATTO3", maker: "import", capacity: 60.5, range: 470, maxCharge: 80 },
   { name: "BYD SEAL", maker: "import", capacity: 82.5, range: 567, maxCharge: 150 },
   { name: "BYD DOLPHIN", maker: "import", capacity: 44.9, range: 376, maxCharge: 60 },
+  // MINI ★新型追加
+  { name: "MINI クーパーE ★新型", maker: "import", capacity: 40.7, range: 344, maxCharge: 75 },
+  { name: "MINI クーパーSE ★新型", maker: "import", capacity: 54.2, range: 446, maxCharge: 90 },
+  // その他
   { name: "プジョー e-2008", maker: "import", capacity: 54, range: 400, maxCharge: 100 },
   { name: "ルノー メガーヌ E-TECH", maker: "import", capacity: 60, range: 450, maxCharge: 130 },
   { name: "ジープ アベンジャー", maker: "import", capacity: 54, range: 400, maxCharge: 100 },
@@ -609,19 +717,19 @@ const cars = [
 let selectedChargerKw = null;
 let currentMaker = 'all';
 
-// ===== 車種プルダウン生成 =====
 function buildCarSelect(maker) {
   const sel = document.getElementById('carSelect');
   const prevVal = sel.value;
-  sel.innerHTML = '<option value="">-- 車種を選択 --</option>';
+  sel.innerHTML = '<option value="">— 車種を選択 —</option>';
 
-  const japanCars = cars.filter(c => maker === 'all' || c.maker === maker).filter(c => c.maker === 'japan');
-  const importCars = cars.filter(c => maker === 'all' || c.maker === maker).filter(c => c.maker === 'import');
+  const filtered = cars.filter(c => maker === 'all' || c.maker === maker);
+  const japanCars = filtered.filter(c => c.maker === 'japan');
+  const importCars = filtered.filter(c => c.maker === 'import');
 
   if (japanCars.length) {
     const og = document.createElement('optgroup');
-    og.label = '🇯🇵 国産車';
-    japanCars.forEach((c, i) => {
+    og.label = '国産車';
+    japanCars.forEach(c => {
       const opt = document.createElement('option');
       opt.value = cars.indexOf(c);
       opt.textContent = c.name;
@@ -631,8 +739,8 @@ function buildCarSelect(maker) {
   }
   if (importCars.length) {
     const og = document.createElement('optgroup');
-    og.label = '🌍 輸入車';
-    importCars.forEach((c, i) => {
+    og.label = '輸入車';
+    importCars.forEach(c => {
       const opt = document.createElement('option');
       opt.value = cars.indexOf(c);
       opt.textContent = c.name;
@@ -655,26 +763,22 @@ function filterMaker(maker) {
 function updateCarInfo() {
   const sel = document.getElementById('carSelect');
   const idx = sel.value;
-  if (idx === '') {
-    document.getElementById('carInfo').style.display = 'none';
-    return;
-  }
+  if (idx === '') { document.getElementById('carInfo').style.display = 'none'; return; }
   const car = cars[idx];
-  const efficiency = (car.range / car.capacity).toFixed(1);
+  const eff = (car.range / car.capacity).toFixed(1);
   document.getElementById('infoCapacity').textContent = car.capacity;
   document.getElementById('infoRange').textContent = car.range;
-  document.getElementById('infoEfficiency').textContent = efficiency;
+  document.getElementById('infoEfficiency').textContent = eff;
   document.getElementById('carInfo').style.display = 'block';
-  const pct = Math.min((car.range / 800) * 100, 100);
-  document.getElementById('batteryFill').style.width = pct + '%';
+  document.getElementById('batteryFill').style.width = Math.min((car.range / 800) * 100, 100) + '%';
 }
 
-// ===== 充電器 =====
 function selectCharger(kw, btn) {
   selectedChargerKw = kw;
   document.querySelectorAll('.charger-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById('customKw').value = '';
+  saveSettings();
 }
 
 function selectCustomCharger() {
@@ -685,12 +789,10 @@ function selectCustomCharger() {
   }
 }
 
-// ===== 距離 =====
 function updateDistance(val) {
   document.getElementById('distanceNum').textContent = val;
-  document.querySelectorAll('.quick-btn').forEach(b => b.classList.remove('active'));
   document.querySelectorAll('.quick-btn').forEach(b => {
-    if (parseInt(b.textContent) === parseInt(val)) b.classList.add('active');
+    b.classList.toggle('active', parseInt(b.textContent) === parseInt(val));
   });
 }
 
@@ -701,23 +803,18 @@ function setDist(val) {
   event.target.classList.add('active');
 }
 
-// ===== 計算 =====
 function calculate() {
   const sel = document.getElementById('carSelect');
   const distance = parseInt(document.getElementById('distSlider').value);
-
   if (!sel.value) { alert('車種を選択してください'); return; }
   if (!selectedChargerKw) { alert('充電器の出力を選択してください'); return; }
 
   const car = cars[sel.value];
-  const efficiency = car.range / car.capacity; // km/kWh
+  const efficiency = car.range / car.capacity;
   const neededKwh = distance / efficiency;
-
-  // 実効充電出力（車の最大受電能力を考慮）
   const effectiveKw = Math.min(selectedChargerKw, car.maxCharge);
   const chargeMinutes = (neededKwh / effectiveKw) * 60;
 
-  // 表示
   let timeStr, unitStr;
   if (chargeMinutes < 60) {
     timeStr = Math.ceil(chargeMinutes).toString();
@@ -726,7 +823,7 @@ function calculate() {
     const h = Math.floor(chargeMinutes / 60);
     const m = Math.ceil(chargeMinutes % 60);
     if (m === 0) { timeStr = h.toString(); unitStr = '時間'; }
-    else { timeStr = `${h}時間${m}`; unitStr = '分'; }
+    else { timeStr = h + '時間' + m; unitStr = '分'; }
   }
 
   document.getElementById('resultTime').textContent = timeStr;
@@ -734,108 +831,76 @@ function calculate() {
   document.getElementById('resKwh').textContent = neededKwh.toFixed(1) + ' kWh';
   document.getElementById('resCharger').textContent = effectiveKw + ' kW';
   document.getElementById('resEfficiency').textContent = efficiency.toFixed(1) + ' km/kWh';
-
   document.getElementById('resultCard').className = 'result-card visible';
 
-  // ヒント表示
   let tip = '';
   if (selectedChargerKw > car.maxCharge) {
-    tip = `<strong>⚠️ 充電器の出力制限：</strong>${car.name}の最大受電能力は${car.maxCharge}kWのため、実際の充電速度は${car.maxCharge}kWで計算しています。`;
+    tip += '<strong>充電出力の上限：</strong>' + car.name + 'の最大受電能力は ' + car.maxCharge + ' kW のため、実際の充電速度は ' + car.maxCharge + ' kW で計算しています。';
   }
   if (distance > car.range) {
-    tip += (tip ? '<br><br>' : '') + `<strong>⚠️ 航続距離に注意：</strong>設定距離(${distance}km)が${car.name}のカタログ航続距離(${car.range}km)を超えています。途中充電が必要になる場合があります。`;
+    tip += (tip ? '<br><br>' : '') + '<strong>航続距離を超えています：</strong>設定距離（' + distance + ' km）がカタログ航続距離（' + car.range + ' km）を超えています。途中充電が必要になる場合があります。';
   }
   if (effectiveKw <= 6) {
-    const h = Math.floor(chargeMinutes / 60);
-    tip += (tip ? '<br><br>' : '') + `<strong>💡 ヒント：</strong>普通充電(${effectiveKw}kW)は充電時間が長くなります。急速充電器(50kW〜)を使うと大幅に短縮できます。`;
+    tip += (tip ? '<br><br>' : '') + '<strong>ヒント：</strong>普通充電（' + effectiveKw + ' kW）は充電時間が長くなります。急速充電器（50 kW〜）を使うと大幅に短縮できます。';
   }
-  if (tip) {
-    document.getElementById('tipCard').innerHTML = tip;
-    document.getElementById('tipCard').className = 'tip-card visible';
-  } else {
-    document.getElementById('tipCard').className = 'tip-card';
-  }
+  const tipEl = document.getElementById('tipCard');
+  tipEl.innerHTML = tip;
+  tipEl.className = tip ? 'tip-card visible' : 'tip-card';
 
   document.getElementById('resultCard').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
-// ===== 保存・復元 =====
 function saveSettings() {
   const sel = document.getElementById('carSelect');
-  const settings = {
-    carIndex: sel.value,
-    chargerKw: selectedChargerKw,
-    customKw: document.getElementById('customKw').value,
-    maker: currentMaker,
-  };
-  localStorage.setItem('evChargeSettings', JSON.stringify(settings));
+  try {
+    localStorage.setItem('evChargeSettings', JSON.stringify({
+      carIndex: sel.value,
+      chargerKw: selectedChargerKw,
+      customKw: document.getElementById('customKw').value,
+      maker: currentMaker,
+    }));
+  } catch(e) {}
 }
 
 function loadSettings() {
-  const raw = localStorage.getItem('evChargeSettings');
-  if (!raw) return;
   try {
+    const raw = localStorage.getItem('evChargeSettings');
+    if (!raw) return;
     const s = JSON.parse(raw);
 
-    // メーカーフィルター復元
     if (s.maker && s.maker !== 'all') {
       currentMaker = s.maker;
       document.querySelectorAll('.maker-tab').forEach(t => {
         t.classList.remove('active');
         if ((s.maker === 'japan' && t.textContent === '国産車') ||
-            (s.maker === 'import' && t.textContent === '輸入車')) {
-          t.classList.add('active');
-        }
+            (s.maker === 'import' && t.textContent === '輸入車')) t.classList.add('active');
       });
       buildCarSelect(s.maker);
     }
 
-    // 車種復元
     if (s.carIndex !== undefined && s.carIndex !== '') {
       document.getElementById('carSelect').value = s.carIndex;
       updateCarInfo();
     }
 
-    // 充電器復元
     if (s.chargerKw) {
       selectedChargerKw = s.chargerKw;
-      // ボタンに対応するものがあればハイライト
       document.querySelectorAll('.charger-btn').forEach(btn => {
-        const kw = parseFloat(btn.querySelector('.kw').textContent);
-        if (kw === s.chargerKw) btn.classList.add('active');
+        if (parseFloat(btn.querySelector('.kw').textContent) === s.chargerKw) btn.classList.add('active');
       });
-      // カスタム値の場合
-      if (s.customKw) {
-        document.getElementById('customKw').value = s.customKw;
-      }
+      if (s.customKw) document.getElementById('customKw').value = s.customKw;
     }
 
-    // 復元バナー表示
     if (s.carIndex !== '' || s.chargerKw) {
-      showRestoredBanner();
+      const banner = document.getElementById('restoredBanner');
+      banner.style.display = 'flex';
+      setTimeout(() => { banner.style.opacity = '0'; setTimeout(() => banner.style.display = 'none', 400); }, 3000);
     }
   } catch(e) {}
 }
 
-function showRestoredBanner() {
-  const banner = document.getElementById('restoredBanner');
-  if (banner) {
-    banner.style.display = 'flex';
-    setTimeout(() => { banner.style.opacity = '0'; setTimeout(() => banner.style.display = 'none', 400); }, 3000);
-  }
-}
-
-// 車種・充電器変更時に自動保存
 document.getElementById('carSelect').addEventListener('change', saveSettings);
 
-// selectCharger に保存を追加
-const _origSelectCharger = selectCharger;
-selectCharger = function(kw, btn) {
-  _origSelectCharger(kw, btn);
-  saveSettings();
-};
-
-// 初期化
 buildCarSelect('all');
 updateDistance(100);
 document.getElementById('distSlider').value = 100;
