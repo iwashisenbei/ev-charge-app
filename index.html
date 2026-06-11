@@ -80,7 +80,7 @@
 
   /* MAIN */
   main {
-    padding: 20px 16px 0;
+    padding: 14px 16px 0;
     max-width: 480px;
     margin: 0 auto;
   }
@@ -89,15 +89,15 @@
   .step-card {
     background: var(--white);
     border-radius: var(--radius-lg);
-    padding: 20px;
-    margin-bottom: 12px;
+    padding: 16px;
+    margin-bottom: 10px;
     border: 1px solid var(--dusty);
   }
   .step-header {
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
   }
   .step-num {
     width: 26px; height: 26px;
@@ -205,15 +205,15 @@
     width: 0%;
   }
 
-  /* CHARGER BUTTONS */
+  /* CHARGER BUTTONS — 1行4列でコンパクト */
   .charger-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
   }
   .charger-btn {
-    padding: 14px 8px;
-    border-radius: var(--radius-md);
+    padding: 8px 4px;
+    border-radius: var(--radius-sm);
     border: 1px solid var(--dusty);
     background: var(--midnight-pale);
     color: var(--text);
@@ -225,7 +225,7 @@
   }
   .charger-btn:hover { border-color: var(--midnight-mid); background: var(--midnight-soft); }
   .charger-btn .kw {
-    font-size: 18px;
+    font-size: 13px;
     font-weight: 600;
     display: block;
     color: var(--midnight);
@@ -233,10 +233,11 @@
     line-height: 1.2;
   }
   .charger-btn .label {
-    font-size: 11px;
-    margin-top: 3px;
+    font-size: 9px;
+    margin-top: 2px;
     display: block;
     color: var(--grey);
+    line-height: 1.3;
   }
   .charger-btn.active {
     border-color: var(--midnight);
@@ -246,16 +247,16 @@
   .charger-btn.active .kw { color: var(--lemon); }
   .charger-btn.active .label { color: var(--dusty); }
 
-  /* CUSTOM CHARGER */
+  /* CUSTOM CHARGER — compact */
   .custom-charger {
-    margin-top: 8px;
+    margin-top: 6px;
     display: flex;
     align-items: center;
     gap: 10px;
     background: var(--midnight-pale);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-sm);
     border: 1px solid var(--dusty);
-    padding: 12px 14px;
+    padding: 8px 12px;
     transition: border-color 0.15s;
   }
   .custom-charger:focus-within { border-color: var(--midnight); }
@@ -265,7 +266,7 @@
     border: none;
     color: var(--text);
     font-family: 'DM Mono', monospace;
-    font-size: 18px;
+    font-size: 15px;
     font-weight: 500;
     width: 80px;
     outline: none;
@@ -358,7 +359,7 @@
   /* CALC BUTTON */
   .calc-btn {
     width: 100%;
-    padding: 16px;
+    padding: 14px;
     border-radius: var(--radius-lg);
     border: none;
     background: var(--midnight);
@@ -630,7 +631,7 @@
 
 <div class="footer">
   計算結果は目安です。気温・走行条件・充電器の実出力により変動します。<br>
-  航続距離はWLTCモード値を参考にしています。★マークは2024〜2026年の新型・改良モデル。<br><br>
+  航続距離はWLTCモード値を参考にしています。<br><br>
   EV充電ナビ — EVライフをもっと身近に
 </div>
 
@@ -638,15 +639,15 @@
 const cars = [
   // 国産 ————————————————————
   // 日産
-  { name: "日産 リーフ B5 (55kWh) ★新型", maker: "japan", capacity: 55, range: 521, maxCharge: 105 },
-  { name: "日産 リーフ B7 (78kWh) ★新型", maker: "japan", capacity: 78, range: 702, maxCharge: 150 },
+  { name: "日産 リーフ B5 (55kWh)", maker: "japan", capacity: 55, range: 521, maxCharge: 105 },
+  { name: "日産 リーフ B7 (78kWh)", maker: "japan", capacity: 78, range: 702, maxCharge: 150 },
   { name: "日産 アリア (66kWh)", maker: "japan", capacity: 66, range: 450, maxCharge: 130 },
   { name: "日産 アリア (91kWh)", maker: "japan", capacity: 91, range: 610, maxCharge: 130 },
   { name: "日産 サクラ", maker: "japan", capacity: 20, range: 180, maxCharge: 50 },
   { name: "日産 クリッパー EV", maker: "japan", capacity: 20, range: 180, maxCharge: 50 },
   // 三菱
   { name: "三菱 eKクロスEV", maker: "japan", capacity: 20, range: 180, maxCharge: 50 },
-  { name: "三菱 アウトランダーPHEV (改良) ★", maker: "japan", capacity: 22.7, range: 106, maxCharge: 50 },
+  { name: "三菱 アウトランダーPHEV", maker: "japan", capacity: 22.7, range: 106, maxCharge: 50 },
   // トヨタ
   { name: "トヨタ bZ4X (FWD)", maker: "japan", capacity: 71.4, range: 559, maxCharge: 150 },
   { name: "トヨタ bZ4X (AWD)", maker: "japan", capacity: 72.8, range: 500, maxCharge: 150 },
@@ -658,7 +659,7 @@ const cars = [
   { name: "スバル ソルテラ", maker: "japan", capacity: 71.4, range: 487, maxCharge: 150 },
   // ホンダ
   { name: "ホンダ e:Ny1", maker: "japan", capacity: 68.8, range: 412, maxCharge: 78 },
-  { name: "ホンダ N-VAN e: ★新型", maker: "japan", capacity: 29.6, range: 245, maxCharge: 50 },
+  { name: "ホンダ N-VAN e:", maker: "japan", capacity: 29.6, range: 245, maxCharge: 50 },
   // マツダ
   { name: "マツダ MX-30 EV", maker: "japan", capacity: 35.5, range: 256, maxCharge: 50 },
 
@@ -674,7 +675,7 @@ const cars = [
   { name: "ボルボ EX30", maker: "import", capacity: 51, range: 344, maxCharge: 153 },
   { name: "ボルボ EX40 シングル", maker: "import", capacity: 69, range: 484, maxCharge: 150 },
   { name: "ボルボ EX40 ツイン", maker: "import", capacity: 78, range: 446, maxCharge: 150 },
-  { name: "ボルボ EX60 ★新型", maker: "import", capacity: 100, range: 560, maxCharge: 200 },
+  { name: "ボルボ EX60", maker: "import", capacity: 100, range: 560, maxCharge: 200 },
   { name: "ボルボ EC40", maker: "import", capacity: 69, range: 480, maxCharge: 150 },
   // BMW
   { name: "BMW iX1 xDrive30", maker: "import", capacity: 64.7, range: 440, maxCharge: 130 },
@@ -695,17 +696,17 @@ const cars = [
   // ポルシェ
   { name: "ポルシェ タイカン", maker: "import", capacity: 93.4, range: 484, maxCharge: 270 },
   // ヒョンデ
-  { name: "ヒョンデ IONIQ5 (84kWh) ★改良新型", maker: "import", capacity: 84, range: 703, maxCharge: 220 },
-  { name: "ヒョンデ IONIQ5 AWD (84kWh) ★改良新型", maker: "import", capacity: 84, range: 648, maxCharge: 220 },
-  { name: "ヒョンデ IONIQ5 N (84kWh) ★", maker: "import", capacity: 84, range: 448, maxCharge: 220 },
+  { name: "ヒョンデ IONIQ5 (84kWh)", maker: "import", capacity: 84, range: 703, maxCharge: 220 },
+  { name: "ヒョンデ IONIQ5 AWD (84kWh)", maker: "import", capacity: 84, range: 648, maxCharge: 220 },
+  { name: "ヒョンデ IONIQ5 N (84kWh)", maker: "import", capacity: 84, range: 448, maxCharge: 220 },
   { name: "ヒョンデ IONIQ6 RWD", maker: "import", capacity: 77.4, range: 614, maxCharge: 220 },
   // BYD
   { name: "BYD ATTO3", maker: "import", capacity: 60.5, range: 470, maxCharge: 80 },
   { name: "BYD SEAL", maker: "import", capacity: 82.5, range: 567, maxCharge: 150 },
   { name: "BYD DOLPHIN", maker: "import", capacity: 44.9, range: 376, maxCharge: 60 },
-  // MINI ★新型追加
-  { name: "MINI クーパーE ★新型", maker: "import", capacity: 40.7, range: 344, maxCharge: 75 },
-  { name: "MINI クーパーSE ★新型", maker: "import", capacity: 54.2, range: 446, maxCharge: 90 },
+  // MINI
+  { name: "MINI クーパーE", maker: "import", capacity: 40.7, range: 344, maxCharge: 75 },
+  { name: "MINI クーパーSE", maker: "import", capacity: 54.2, range: 446, maxCharge: 90 },
   // その他
   { name: "プジョー e-2008", maker: "import", capacity: 54, range: 400, maxCharge: 100 },
   { name: "ルノー メガーヌ E-TECH", maker: "import", capacity: 60, range: 450, maxCharge: 130 },
